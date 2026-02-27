@@ -1,0 +1,16 @@
+org_name: nullstone
+name: gcp-cloud-ids
+friendly_name: Cloud IDS (Intrusion Detection System)
+description: Creates Cloud IDS (Intrusion Detection System) endpoint(s) on the connected VPC
+category: block
+subcategory: ""
+provider_types:
+    - gcp
+platform: cloudids
+subplatform: ""
+type: ""
+appCategories: []
+is_public: true
+tool_name: opentofu
+include: []
+source_url: https://github.com/nullstone-modules/gcp-cloud-ids
