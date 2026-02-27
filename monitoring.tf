@@ -42,8 +42,14 @@ resource "google_logging_metric" "threat_count" {
   }
 }
 
+resource "time_sleep" "threat_count" {
+  create_duration = "30s"
+  depends_on      = [google_logging_metric.threat_count]
+}
+
 resource "google_monitoring_alert_policy" "cloud_ids_threats" {
-  count = local.notification_name == "" ? 0 : 1
+  count      = local.notification_name == "" ? 0 : 1
+  depends_on = [time_sleep.threat_count]
 
   display_name = "Cloud IDS threat detected"
   combiner     = "OR"
