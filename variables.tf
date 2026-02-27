@@ -8,3 +8,9 @@ variable "threat_severity" {
     error_message = "Threat severity must be one of: INFORMATIONAL, LOW, MEDIUM, HIGH."
   }
 }
+
+variable "alert_severities" {
+  type        = list(string)
+  default     = ["MEDIUM", "HIGH", "CRITICAL"]
+  description = "List of alert severities to monitor. (INFORMATIONAL, LOW, MEDIUM, HIGH)"
+}

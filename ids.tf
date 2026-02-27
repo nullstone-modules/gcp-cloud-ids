@@ -35,3 +35,8 @@ resource "google_compute_packet_mirroring" "ids_mirroring" {
     ip_protocols = ["tcp", "udp", "icmp"]
   }
 }
+
+locals {
+  ids_endpoint_id   = google_cloud_ids_endpoint.this.id
+  ids_endpoint_name = google_cloud_ids_endpoint.this.name
+}
