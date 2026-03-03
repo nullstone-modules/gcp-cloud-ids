@@ -64,13 +64,13 @@ resource "google_monitoring_alert_policy" "cloud_ids_threats" {
       comparison      = "COMPARISON_GT"
       threshold_value = 0
 
-      # “Any threats in the last minute” style alert
-      duration = "60s"
+      # "Any threats in the last hour" style alert
+      duration = "3600s"
 
       aggregations {
         per_series_aligner   = "ALIGN_RATE"
         cross_series_reducer = "REDUCE_NONE"
-        alignment_period     = "60s"
+        alignment_period     = "3600s"
         group_by_fields      = []
       }
     }
