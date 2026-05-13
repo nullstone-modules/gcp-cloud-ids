@@ -14,3 +14,9 @@ variable "alert_severities" {
   default     = ["MEDIUM", "HIGH", "CRITICAL"]
   description = "List of alert severities to monitor. (INFORMATIONAL, LOW, MEDIUM, HIGH)"
 }
+
+variable "threat_threshold" {
+  type        = number
+  default     = 1
+  description = "Alert fires when threat count in a 1-hour window exceeds this value. Set higher to tolerate low-level noise."
+}

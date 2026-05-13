@@ -56,19 +56,18 @@ resource "google_monitoring_alert_policy" "cloud_ids_threats" {
   enabled      = true
 
   conditions {
-    display_name = "Cloud IDS threat count > 0"
+    display_name = "Cloud IDS threat count > ${var.threat_threshold}"
 
     condition_threshold {
       # Log-based metrics appear in Monitoring under logging.googleapis.com/user/<metric-name>
       filter          = "resource.type=\"ids.googleapis.com/Endpoint\" metric.type=\"logging.googleapis.com/user/${google_logging_metric.threat_count[0].name}\""
       comparison      = "COMPARISON_GT"
-      threshold_value = 0
+      threshold_value = var.threat_threshold
 
-      # "Any threats in the last hour" style alert
-      duration = "3600s"
+      duration = "0s"
 
       aggregations {
-        per_series_aligner   = "ALIGN_RATE"
+        per_series_aligner   = "ALIGN_SUM"
         cross_series_reducer = "REDUCE_NONE"
         alignment_period     = "3600s"
         group_by_fields      = []
